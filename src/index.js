@@ -4,9 +4,12 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+document.body.classList.add("bg-dark");
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <div className="container bg-dark p-2 text-warning text-center">
+        <App />
+    </div>
   </React.StrictMode>,
   document.getElementById('root')
 );

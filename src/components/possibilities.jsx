@@ -8,11 +8,14 @@ class Possibilities extends Component {
       return <p> Too many possibilities to list... </p>;
     } else {
       return (
-        <ul>
+        <React.Fragment>
+        <p> Possibilities... </p>
+        <ul className="items">
           {candidates.map((w, i) => (
-            <li key={i}>{w}</li>
+            <li className="item" key={i}>{w}</li>
           ))}
         </ul>
+        </React.Fragment>
       );
     }
   }

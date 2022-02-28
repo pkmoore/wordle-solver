@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import LetterRow from "./components/letterrow";
 import Possibilities from "./components/possibilities";
+import 'bootstrap/dist/css/bootstrap.css';
 
 class App extends Component {
   state = {
@@ -138,7 +139,7 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <h1>Top</h1>
+        <h1>Cheatle</h1>
         <div>
           {this.state.letterRows.map((lr) => (
             <LetterRow
@@ -155,7 +156,6 @@ class App extends Component {
                          inWordLetters={this.getInWordLetters()}
                          notInWordLetters={this.getNotInWordLetters()} />
         </div>
-        <h1>Bottom</h1>
       </React.Fragment>
     );
   }

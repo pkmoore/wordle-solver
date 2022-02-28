@@ -1,5 +1,38 @@
+body {
+    background-color: black;
+}
+
+input[type="text"]
+{
+    font-size:37px;
+    height: 56px;
+    width: 56px;
+    text-align: center;
+      border-radius: 10px;
+      border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: hidden;
+  border: 2px solid;
+  border-color: #3c3c3c;
+  margin: 3px;
+}
+
+.items {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+}
+
+.items .item {
+  flex-basis: 80px;
+  flex-grow: 1;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
 .NotInWord {
-    background-color: white;
+    background-color: #263238;
 }
 
 .InWord {
@@ -10,14 +43,6 @@
     background-color: #55cc00;
 }
 
-body {
-    background-color: #dbd3b2;
-}
-
-input {
-  border-radius: 3px;
-  background: #73AD21;
-}
 
 .App {
   text-align: center;
@@ -26,34 +51,4 @@ input {
 .App-logo {
   height: 40vmin;
   pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
