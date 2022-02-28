@@ -66,7 +66,6 @@ class App extends Component {
      .filter(l => l.value !== "" && l.adjective === "InCorrectPlace")
      .forEach(l => letters.add(l));
     }
-      console.log("InCorrectPlace", letters);
       return [...letters];
   }
 
@@ -77,7 +76,6 @@ class App extends Component {
      .filter(l => l.value !== "" && l.adjective === "InWord")
      .forEach(l => letters.add(l));
     }
-      console.log("Inword", letters);
       return [...letters];
   }
 
@@ -88,7 +86,6 @@ class App extends Component {
      .filter(l => l.value !== "" && l.adjective === "NotInWord")
      .forEach(l => letters.add(l));
     }
-    console.log("NotInWord", letters);
     return [...letters];
   }
 
