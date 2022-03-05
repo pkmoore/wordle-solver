@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import LetterRow from "./components/letterrow";
 import Possibilities from "./components/possibilities";
-import 'bootstrap/dist/css/bootstrap.css';
+import "bootstrap/dist/css/bootstrap.css";
 
 class App extends Component {
   state = {
@@ -62,37 +62,35 @@ class App extends Component {
 
   getInCorrectPlaceLetters() {
     let letters = new Set();
-    for(let i = 0; i < this.state.letterRows.length; i++) {
+    for (let i = 0; i < this.state.letterRows.length; i++) {
       this.state.letterRows[i].letters
-     .filter(l => l.value !== "" && l.adjective === "InCorrectPlace")
-     .forEach(l => letters.add(l));
+        .filter((l) => l.value !== "" && l.adjective === "InCorrectPlace")
+        .forEach((l) => letters.add(l));
     }
-      return [...letters];
+    return [...letters];
   }
 
   getInWordLetters() {
     let letters = new Set();
-    for(let i = 0; i < this.state.letterRows.length; i++) {
+    for (let i = 0; i < this.state.letterRows.length; i++) {
       this.state.letterRows[i].letters
-     .filter(l => l.value !== "" && l.adjective === "InWord")
-     .forEach(l => letters.add(l));
+        .filter((l) => l.value !== "" && l.adjective === "InWord")
+        .forEach((l) => letters.add(l));
     }
-      return [...letters];
+    return [...letters];
   }
 
   getNotInWordLetters() {
     let letters = new Set();
-    for(let i = 0; i < this.state.letterRows.length; i++) {
+    for (let i = 0; i < this.state.letterRows.length; i++) {
       this.state.letterRows[i].letters
-     .filter(l => l.value !== "" && l.adjective === "NotInWord")
-     .forEach(l => letters.add(l));
+        .filter((l) => l.value !== "" && l.adjective === "NotInWord")
+        .forEach((l) => letters.add(l));
     }
     return [...letters];
   }
 
   handleChange = (letterRow, letter, e) => {
-    const data = e.nativeEvent.data;
-    if(!data) return;
     const letterRows = [...this.state.letterRows];
     const letterRowIndex = letterRows.indexOf(letterRow);
     letterRows[letterRowIndex] = { ...letterRow };
@@ -102,12 +100,22 @@ class App extends Component {
     letters[letterIndex] = { ...letter };
     letterRows[letterRowIndex].letters = letters;
 
-    letters[letterIndex].value = e.nativeEvent.data.toUpperCase();
+    const data = e.nativeEvent.data;
+    if (!data) {
+      const inputType = e.nativeEvent.inputType;
+      // If we delete the letter, empty the input and revert adjective to
+      // NotInWord
+      if (inputType === "deleteContentBackward") {
+        letters[letterIndex].value = "";
+        letters[letterIndex].adjective = "NotInWord";
+      }
+    } else {
+      letters[letterIndex].value = e.nativeEvent.data.toUpperCase();
+    }
     this.setState({ letterRows });
   };
 
   cycleAdjective(letterRow, letter) {
-    if(!letter.value) return;
     const letterRows = [...this.state.letterRows];
     const letterRowIndex = letterRows.indexOf(letterRow);
     letterRows[letterRowIndex] = { ...letterRow };
@@ -118,9 +126,10 @@ class App extends Component {
     letterRows[letterRowIndex].letters = letters;
 
     letters[letterIndex] = { ...letter };
-    if (letters[letterIndex].adjective === "NotInWord") {
+    const { adjective } = letters[letterIndex];
+    if (adjective === "NotInWord") {
       letters[letterIndex].adjective = "InWord";
-    } else if (letters[letterIndex].adjective === "InWord") {
+    } else if (adjective === "InWord") {
       letters[letterIndex].adjective = "InCorrectPlace";
     } else {
       ///must be "InCorrectPlace"
@@ -130,8 +139,14 @@ class App extends Component {
   }
 
   handleClick = (letterRow, letter, e) => {
-    // e.detail === 2 means a double click
-    if (e.detail === 2) {
+    const letterRowIndex = this.state.letterRows.indexOf(letterRow);
+    const letterIndex =
+      this.state.letterRows[letterRowIndex].letters.indexOf(letter);
+    if (
+      this.state.letterRows[letterRowIndex].letters[letterIndex].value === ""
+    ) {
+      return;
+    } else {
       this.cycleAdjective(letterRow, letter);
     }
   };
@@ -152,9 +167,11 @@ class App extends Component {
           ))}
         </div>
         <div>
-          <Possibilities inCorrectPlaceLetters={this.getInCorrectPlaceLetters()}
-                         inWordLetters={this.getInWordLetters()}
-                         notInWordLetters={this.getNotInWordLetters()} />
+          <Possibilities
+            inCorrectPlaceLetters={this.getInCorrectPlaceLetters()}
+            inWordLetters={this.getInWordLetters()}
+            notInWordLetters={this.getNotInWordLetters()}
+          />
         </div>
       </React.Fragment>
     );
