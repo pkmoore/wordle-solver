@@ -4,8 +4,10 @@ body {
 
 input[type="text"]
 {
+  padding: 0px;
   caret-color: transparent;
-  font-size: 2rem;
+  text-overflow: hidden;
+  font-size: 29pt;
   font-weight: bold;
   height: 56px;
   width: 56px;
@@ -18,9 +20,10 @@ input[type="text"]
   border: 2px solid;
   border-color: #3c3c3c;
   margin: 3px;
+  -webkit-tap-highlight-color: transparent;
 }
 
-input:focus { 
+input:focus {
     border-color: #FFEFD5;
     outline: none;
 }
@@ -47,11 +50,11 @@ input::selection {
 }
 
 .InWord {
-    background-color: #feca1f;
+    background-color: #EBA63F;
 }
 
 .InCorrectPlace {
-    background-color: #55cc00;
+    background-color: #438945;
 }
 
 
