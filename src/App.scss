@@ -1,5 +1,36 @@
-body {
-    background-color: black;
+// Default variable overrides
+
+$dark: #121213;
+$grey: #3a3a3c;
+$lightgrey: #6c6c6f;
+
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+.title {
+    font-family: "Georgia", "Times New Roman", "serif";
+    font-size: 2em;
+}
+
+.navbar {
+    border-bottom: 1px solid $grey;
+    margin-bottom: 20px;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.navitem {
+    font-size: 1.5em;
+    color: $white;
+}
+
+.help-button {
+    font-size: 1.5em;
+    color: $white;
+}
+
+.help-button:hover {
+    color: $lightgrey;
 }
 
 input[type="text"].letter
@@ -12,13 +43,13 @@ input[type="text"].letter
   height: 56px;
   width: 56px;
   text-align: center;
-  border-radius: 10px;
   border-top-style: hidden;
   border-right-style: hidden;
   border-left-style: hidden;
   border-bottom-style: hidden;
   border: 2px solid;
-  border-color: #3c3c3c;
+  border-color: $grey;
+  background-color: #121213;
   margin: 3px;
   -webkit-tap-highlight-color: transparent;
 }

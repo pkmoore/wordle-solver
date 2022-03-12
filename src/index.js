@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './App.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 document.body.classList.add("bg-dark");
 ReactDOM.render(
   <React.StrictMode>
-    <div className="container bg-dark p-2 text-warning text-center">
+    <div className="container bg-dark text-white p-2 text-center">
         <App />
     </div>
   </React.StrictMode>,

@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import "./App.css";
+import "./App.scss";
 import LetterRow from "./components/letterrow";
 import Possibilities from "./components/possibilities";
-import "bootstrap/dist/css/bootstrap.css";
+import Header from "./components/header";
 
 class App extends Component {
   state = {
@@ -185,7 +185,7 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <h1>Cheatle</h1>
+        <Header />
         <div>
           {this.state.letterRows.map((lr) => (
             <LetterRow
