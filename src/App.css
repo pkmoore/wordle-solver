@@ -2,7 +2,7 @@ body {
     background-color: black;
 }
 
-input[type="text"]
+input[type="text"].letter
 {
   padding: 0px;
   caret-color: transparent;
@@ -23,7 +23,7 @@ input[type="text"]
   -webkit-tap-highlight-color: transparent;
 }
 
-input:focus {
+input.letter:focus {
     border-color: #FFEFD5;
     outline: none;
 }
