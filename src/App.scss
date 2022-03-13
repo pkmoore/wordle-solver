@@ -1,9 +1,6 @@
 // Default variable overrides
 
-$dark: #121213;
-$grey: #3a3a3c;
-$lightgrey: #6c6c6f;
-
+@import "./colors";
 
 @import "../node_modules/bootstrap/scss/bootstrap";
 
@@ -49,7 +46,6 @@ input[type="text"].letter
   border-bottom-style: hidden;
   border: 2px solid;
   border-color: $grey;
-  background-color: #121213;
   margin: 3px;
   -webkit-tap-highlight-color: transparent;
 }
@@ -77,15 +73,15 @@ input::selection {
 }
 
 .NotInWord {
-    background-color: #263238;
+    background-color: $dark;
 }
 
 .InWord {
-    background-color: #EBA63F;
+    background-color: $InWord;
 }
 
 .InCorrectPlace {
-    background-color: #438945;
+    background-color: $InCorrectPlace;
 }
 
 

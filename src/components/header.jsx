@@ -5,13 +5,18 @@ class Header extends Component {
     return (
       <React.Fragment>
       <header className="navbar flex-row justify-content-between">
-        <span className="navtext">&nbsp;&nbsp;</span>
+        <button
+          type="button"
+          className="btn help-button"
+          onClick={this.props.onClick}
+        >
+          ?
+        </button>
         <span className="title nav-brand">Cheatle</span>
         <button
           type="button"
           className="btn help-button"
-          data-toggle="modal"
-          data-target="#exampleModal"
+          onClick={this.props.onClick}
         >
           ?
         </button>

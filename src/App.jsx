@@ -3,9 +3,11 @@ import "./App.scss";
 import LetterRow from "./components/letterrow";
 import Possibilities from "./components/possibilities";
 import Header from "./components/header";
+import HelpModal from "./components/helpmodal";
 
 class App extends Component {
   state = {
+    helpModalOpen: true,
     previousElement: null,
     letterRows: [
       {
@@ -182,10 +184,19 @@ class App extends Component {
     this.setState({ previousElement: letter.ref.current });
   };
 
+  setModalOpen = (value) => {
+    this.setState({ helpModalOpen: value});
+  }
+
+  handleHelpClick = () => {
+    this.setModalOpen(true);
+  }
+
   render() {
     return (
       <React.Fragment>
-        <Header />
+        <Header onClick={this.handleHelpClick} />
+        {this.state.helpModalOpen && <HelpModal setModalOpen={this.setModalOpen}/>}
         <div>
           {this.state.letterRows.map((lr) => (
             <LetterRow

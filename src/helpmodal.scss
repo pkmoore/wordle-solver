@@ -1,0 +1,56 @@
+@import "colors";
+
+.modal-bg {
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+}
+
+.centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.modal-box {
+  width: 30em;
+  height: 35em;
+  background: $dark;
+  color: white;
+  border: 1px;
+  border-color: $grey;
+}
+
+.modal-header {
+  padding-top: 1em;
+  padding-bottom: .5em;
+}
+
+.modal-title {
+}
+
+.modal-close {
+    border: 0;
+    color: white;
+    background-color: $dark;
+}
+
+.modal-content {
+    text-align: left;
+  background-color: $dark;
+  padding: 1em;
+}
+
+.TextInWord {
+    color: $InWord;
+}
+
+.TextInCorrectPlace {
+    color: $InCorrectPlace;
+}
