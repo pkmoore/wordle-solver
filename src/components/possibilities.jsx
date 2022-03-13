@@ -21,8 +21,24 @@ class Possibilities extends Component {
   }
 
   getCandidateWords() {
-    const { inCorrectPlaceLetters, inWordLetters, notInWordLetters } =
+    let { inCorrectPlaceLetters, inWordLetters, notInWordLetters } =
       this.props;
+
+    // This part is going to seem weird but is necessary based on how
+    // the NYT WORDLE game deals with when you guess a word with a duplicated
+    // letter and get one of the positions right.  The game gives you a green
+    // square for the correct letter and an ABSENT square for the duplicate.
+    // Without this code, marking your solver guess to match this would result
+    // in NO RESULTS.  Instead, if a letter is correct and in the correct place,
+    // we filter it out of the notInWords array effectively ignoring
+    // its duplicate ABSENT marking
+    let correctLetters = inCorrectPlaceLetters.map((l) => {
+        return l.value;
+    });
+
+    notInWordLetters = notInWordLetters.filter((w) => {
+        return correctLetters.indexOf(w.value) === -1;
+    });
 
     const words = getWords();
 
@@ -41,7 +57,9 @@ class Possibilities extends Component {
       }
 
       for (let i = 0; i < inWordLetters.length; i++) {
-        if (!w.includes(inWordLetters[i].value)) {
+          let index = inWordLetters[i].id;
+        if (!w.includes(inWordLetters[i].value)
+            || w[index] === inWordLetters[i].value) {
           return false;
         }
       }
