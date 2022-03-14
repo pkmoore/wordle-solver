@@ -7,6 +7,8 @@ class Possibilities extends Component {
     let candidates = this.getCandidateWords();
     if (candidates.length > 100) {
       return <p> Too many possibilities to list... </p>;
+    } else if (candidates.length === 0 ) {
+      return <p> There are no words that match your guesses! </p>;
     } else {
       return (
         <React.Fragment>
