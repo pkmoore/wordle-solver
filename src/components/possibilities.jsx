@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { getWords } from "../data/dictionary";
+import { getBestPos } from "../data/letterpos";
 
 class Possibilities extends Component {
   render() {
@@ -12,12 +13,22 @@ class Possibilities extends Component {
         <p> Possibilities... </p>
         <ul className="items">
           {candidates.map((w, i) => (
-            <li className="item" key={i}>{w}</li>
+            <li className={"item" + (this.shouldHilightCandidate(w) ? " glow" : "") }
+                key={i}>{w}</li>
           ))}
         </ul>
         </React.Fragment>
       );
     }
+  }
+
+  shouldHilightCandidate(candidate) {
+    const presentLetters = this.props.inWordLetters.map((w) => {
+        return {value: w.value, pos: getBestPos(w.value)};
+    });
+    return presentLetters.some((l) => {
+        return candidate[l.pos] === l.value;
+    });
   }
 
   getCandidateWords() {
