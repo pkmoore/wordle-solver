@@ -11,12 +11,12 @@ class Letter extends Component {
 
   getClassesForStatus(letter) {
     let classes = "text-white col-small letter ";
-    if (letter.adjective === "NotInWord") {
-      return classes + "NotInWord";
-    } else if (letter.adjective === "InWord") {
-      return classes + "InWord";
+    if (letter.adjective === "Absent") {
+      return classes + "absent";
+    } else if (letter.adjective === "Present") {
+      return classes + "present";
     } else {
-      return classes + "InCorrectPlace";
+      return classes + "correct";
     }
   }
 

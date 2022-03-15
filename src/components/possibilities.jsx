@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { getWords } from "../data/dictionary";
-import { getBestPos } from "../data/letterpos";
+import { getBestPos } from "../data/letterstats";
 
 class Possibilities extends Component {
   render() {
@@ -13,7 +13,7 @@ class Possibilities extends Component {
       return (
         <React.Fragment>
         <p> Possibilities... </p>
-        <ul className="no-indent items">
+        <ul className="items noindent">
           {candidates.map((w, i) => (
             <li className={"item" + (this.shouldHilightCandidate(w) ? " glow" : "") }
                 key={i}>{w}</li>
@@ -25,7 +25,7 @@ class Possibilities extends Component {
   }
 
   shouldHilightCandidate(candidate) {
-    const presentLetters = this.props.inWordLetters.map((w) => {
+    const presentLetters = this.props.presentLetters.map((w) => {
         return {value: w.value, pos: getBestPos(w.value)};
     });
     return presentLetters.some((l) => {
@@ -34,7 +34,7 @@ class Possibilities extends Component {
   }
 
   getCandidateWords() {
-    let { inCorrectPlaceLetters, inWordLetters, notInWordLetters } =
+    let { correctLetters, presentLetters, absentLetters } =
       this.props;
 
     // This part is going to seem weird but is necessary based on how
@@ -45,34 +45,34 @@ class Possibilities extends Component {
     // in NO RESULTS.  Instead, if a letter is correct and in the correct place,
     // we filter it out of the notInWords array effectively ignoring
     // its duplicate ABSENT marking
-    let correctLetters = inCorrectPlaceLetters.map((l) => {
+    let correctLetterValues = correctLetters.map((l) => {
         return l.value;
     });
 
-    notInWordLetters = notInWordLetters.filter((w) => {
-        return correctLetters.indexOf(w.value) === -1;
+    absentLetters = absentLetters.filter((w) => {
+        return correctLetterValues.indexOf(w.value) === -1;
     });
 
     const words = getWords();
 
     return words.filter((w) => {
-      for (let i = 0; i < inCorrectPlaceLetters.length; i++) {
-        let index = inCorrectPlaceLetters[i].id;
-        if (w[index] !== inCorrectPlaceLetters[i].value) {
+      for (let i = 0; i < correctLetters.length; i++) {
+        let index = correctLetters[i].id;
+        if (w[index] !== correctLetters[i].value) {
           return false;
         }
       }
 
-      for (let i = 0; i < notInWordLetters.length; i++) {
-        if (w.includes(notInWordLetters[i].value)) {
+      for (let i = 0; i < absentLetters.length; i++) {
+        if (w.includes(absentLetters[i].value)) {
           return false;
         }
       }
 
-      for (let i = 0; i < inWordLetters.length; i++) {
-          let index = inWordLetters[i].id;
-        if (!w.includes(inWordLetters[i].value)
-            || w[index] === inWordLetters[i].value) {
+      for (let i = 0; i < presentLetters.length; i++) {
+          let index = presentLetters[i].id;
+        if (!w.includes(presentLetters[i].value)
+            || w[index] === presentLetters[i].value) {
           return false;
         }
       }

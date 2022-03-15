@@ -1,4 +1,4 @@
-const letterFreqs = {
+const inWordPositionLikelihood = {
   E: [
     {
       "pos": 1,
@@ -705,7 +705,7 @@ const letterFreqs = {
 
 export function getBestPos(letter) {
     console.log(letter);
-    const positions = letterFreqs[letter];
+    const positions = inWordPositionLikelihood[letter];
     const best = positions.reduce((best, cur) => {
         return cur.per > best.per ? cur : best;
     });

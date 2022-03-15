@@ -32,9 +32,6 @@
   padding-bottom: .5em;
 }
 
-.modal-title {
-}
-
 .modal-close {
     border: 0;
     color: white;
@@ -47,10 +44,10 @@
   padding: 1em;
 }
 
-.TextInWord {
-    color: $InWord;
+.text-present{
+    color: $present;
 }
 
-.TextInCorrectPlace {
-    color: $InCorrectPlace;
+.text-correct {
+    color: $correct;
 }

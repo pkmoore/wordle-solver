@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./App.scss";
+import "./scss/App.scss";
 import LetterRow from "./components/letterrow";
 import Possibilities from "./components/possibilities";
 import Header from "./components/header";
@@ -13,81 +13,81 @@ class App extends Component {
       {
         id: 0,
         letters: [
-          { id: 0, value: "", adjective: "NotInWord", ref: React.createRef() },
-          { id: 1, value: "", adjective: "NotInWord", ref: React.createRef() },
-          { id: 2, value: "", adjective: "NotInWord", ref: React.createRef() },
-          { id: 3, value: "", adjective: "NotInWord", ref: React.createRef() },
-          { id: 4, value: "", adjective: "NotInWord", ref: React.createRef() },
+          { id: 0, value: "", adjective: "Absent", ref: React.createRef() },
+          { id: 1, value: "", adjective: "Absent", ref: React.createRef() },
+          { id: 2, value: "", adjective: "Absent", ref: React.createRef() },
+          { id: 3, value: "", adjective: "Absent", ref: React.createRef() },
+          { id: 4, value: "", adjective: "Absent", ref: React.createRef() },
         ],
       },
       {
         id: 1,
         letters: [
-          { id: 0, value: "", adjective: "NotInWord", ref: React.createRef() },
-          { id: 1, value: "", adjective: "NotInWord", ref: React.createRef() },
-          { id: 2, value: "", adjective: "NotInWord", ref: React.createRef() },
-          { id: 3, value: "", adjective: "NotInWord", ref: React.createRef() },
-          { id: 4, value: "", adjective: "NotInWord", ref: React.createRef() },
+          { id: 0, value: "", adjective: "Absent", ref: React.createRef() },
+          { id: 1, value: "", adjective: "Absent", ref: React.createRef() },
+          { id: 2, value: "", adjective: "Absent", ref: React.createRef() },
+          { id: 3, value: "", adjective: "Absent", ref: React.createRef() },
+          { id: 4, value: "", adjective: "Absent", ref: React.createRef() },
         ],
       },
       {
         id: 2,
         letters: [
-          { id: 0, value: "", adjective: "NotInWord", ref: React.createRef() },
-          { id: 1, value: "", adjective: "NotInWord", ref: React.createRef() },
-          { id: 2, value: "", adjective: "NotInWord", ref: React.createRef() },
-          { id: 3, value: "", adjective: "NotInWord", ref: React.createRef() },
-          { id: 4, value: "", adjective: "NotInWord", ref: React.createRef() },
+          { id: 0, value: "", adjective: "Absent", ref: React.createRef() },
+          { id: 1, value: "", adjective: "Absent", ref: React.createRef() },
+          { id: 2, value: "", adjective: "Absent", ref: React.createRef() },
+          { id: 3, value: "", adjective: "Absent", ref: React.createRef() },
+          { id: 4, value: "", adjective: "Absent", ref: React.createRef() },
         ],
       },
       {
         id: 3,
         letters: [
-          { id: 0, value: "", adjective: "NotInWord", ref: React.createRef() },
-          { id: 1, value: "", adjective: "NotInWord", ref: React.createRef() },
-          { id: 2, value: "", adjective: "NotInWord", ref: React.createRef() },
-          { id: 3, value: "", adjective: "NotInWord", ref: React.createRef() },
-          { id: 4, value: "", adjective: "NotInWord", ref: React.createRef() },
+          { id: 0, value: "", adjective: "Absent", ref: React.createRef() },
+          { id: 1, value: "", adjective: "Absent", ref: React.createRef() },
+          { id: 2, value: "", adjective: "Absent", ref: React.createRef() },
+          { id: 3, value: "", adjective: "Absent", ref: React.createRef() },
+          { id: 4, value: "", adjective: "Absent", ref: React.createRef() },
         ],
       },
       {
         id: 4,
         letters: [
-          { id: 0, value: "", adjective: "NotInWord", ref: React.createRef() },
-          { id: 1, value: "", adjective: "NotInWord", ref: React.createRef() },
-          { id: 2, value: "", adjective: "NotInWord", ref: React.createRef() },
-          { id: 3, value: "", adjective: "NotInWord", ref: React.createRef() },
-          { id: 4, value: "", adjective: "NotInWord", ref: React.createRef() },
+          { id: 0, value: "", adjective: "Absent", ref: React.createRef() },
+          { id: 1, value: "", adjective: "Absent", ref: React.createRef() },
+          { id: 2, value: "", adjective: "Absent", ref: React.createRef() },
+          { id: 3, value: "", adjective: "Absent", ref: React.createRef() },
+          { id: 4, value: "", adjective: "Absent", ref: React.createRef() },
         ],
       },
     ],
   };
 
-  getInCorrectPlaceLetters() {
+  getCorrectLetters() {
     let letters = new Set();
     for (let i = 0; i < this.state.letterRows.length; i++) {
       this.state.letterRows[i].letters
-        .filter((l) => l.value !== "" && l.adjective === "InCorrectPlace")
+        .filter((l) => l.value !== "" && l.adjective === "Correct")
         .forEach((l) => letters.add(l));
     }
     return [...letters];
   }
 
-  getInWordLetters() {
+  getPresentLetters() {
     let letters = new Set();
     for (let i = 0; i < this.state.letterRows.length; i++) {
       this.state.letterRows[i].letters
-        .filter((l) => l.value !== "" && l.adjective === "InWord")
+        .filter((l) => l.value !== "" && l.adjective === "Present")
         .forEach((l) => letters.add(l));
     }
     return [...letters];
   }
 
-  getNotInWordLetters() {
+  getAbsentLetters() {
     let letters = new Set();
     for (let i = 0; i < this.state.letterRows.length; i++) {
       this.state.letterRows[i].letters
-        .filter((l) => l.value !== "" && l.adjective === "NotInWord")
+        .filter((l) => l.value !== "" && l.adjective === "Absent")
         .forEach((l) => letters.add(l));
     }
     return [...letters];
@@ -116,7 +116,7 @@ class App extends Component {
         operatingLetter = letters[letterIndex - 1];
       }
       operatingLetter.value = "";
-      operatingLetter.adjective = "NotInWord";
+      operatingLetter.adjective = "Absent";
       this.setState({ letterRows });
     }
   };
@@ -160,13 +160,13 @@ class App extends Component {
 
     letters[letterIndex] = { ...letter };
     const { adjective } = letters[letterIndex];
-    if (adjective === "NotInWord") {
-      letters[letterIndex].adjective = "InWord";
-    } else if (adjective === "InWord") {
-      letters[letterIndex].adjective = "InCorrectPlace";
+    if (adjective === "Absent") {
+      letters[letterIndex].adjective = "Present";
+    } else if (adjective === "Present") {
+      letters[letterIndex].adjective = "Correct";
     } else {
-      ///must be "InCorrectPlace"
-      letters[letterIndex].adjective = "NotInWord";
+      ///must be "Correct"
+      letters[letterIndex].adjective = "Absent";
     }
     this.setState({ letterRows });
   }
@@ -212,9 +212,9 @@ class App extends Component {
         </div>
         <div>
           <Possibilities
-            inCorrectPlaceLetters={this.getInCorrectPlaceLetters()}
-            inWordLetters={this.getInWordLetters()}
-            notInWordLetters={this.getNotInWordLetters()}
+            correctLetters={this.getCorrectLetters()}
+            presentLetters={this.getPresentLetters()}
+            absentLetters={this.getAbsentLetters()}
           />
         </div>
       </React.Fragment>

@@ -2,7 +2,7 @@
 
 @import "./colors";
 
-@import "../node_modules/bootstrap/scss/bootstrap";
+@import "../../node_modules/bootstrap/scss/bootstrap";
 
 .title {
     font-family: "Georgia", "Times New Roman", "serif";
@@ -72,27 +72,26 @@ input::selection {
   box-sizing: border-box;
 }
 
-.no-indent {
+.noindent {
   list-style: none;
   padding-left: 0;
 }
 
-
 .glow {
   color: white;
-  text-shadow: 0 0 1px $dark, 0 0 2px $dark, 0 0 3px $InWord, 0 0 4px $InWord, 0 0 5px $InWord, 0 0 6px $InWord, 0 0 7px $InWord;
+  text-shadow: 0 0 1px $dark, 0 0 2px $dark, 0 0 3px $present, 0 0 4px $present, 0 0 5px $present, 0 0 6px $present, 0 0 7px $present;
 }
 
-.NotInWord {
-    background-color: $dark;
+.absent {
+    background-color: $absent;
 }
 
-.InWord {
-    background-color: $InWord;
+.present {
+    background-color: $present;
 }
 
-.InCorrectPlace {
-    background-color: $InCorrectPlace;
+.correct {
+    background-color: $correct;
 }
 
 

@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
-import { getBestPos } from './data/letterpos';
+import { getBestPos } from './data/letterstats';
 import { shouldHilightCandidate } from './components/possibilities';
 
 test('Get the most frequent position for a letter', () => {
