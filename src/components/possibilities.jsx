@@ -13,7 +13,7 @@ class Possibilities extends Component {
       return (
         <React.Fragment>
         <p> Possibilities... </p>
-        <ul className="items">
+        <ul className="no-indent items">
           {candidates.map((w, i) => (
             <li className={"item" + (this.shouldHilightCandidate(w) ? " glow" : "") }
                 key={i}>{w}</li>

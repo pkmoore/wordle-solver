@@ -72,6 +72,12 @@ input::selection {
   box-sizing: border-box;
 }
 
+.no-indent {
+  list-style: none;
+  padding-left: 0;
+}
+
+
 .glow {
   color: white;
   text-shadow: 0 0 1px $dark, 0 0 2px $dark, 0 0 3px $InWord, 0 0 4px $InWord, 0 0 5px $InWord, 0 0 6px $InWord, 0 0 7px $InWord;
